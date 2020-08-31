@@ -28,7 +28,7 @@ dotnet run
 
 
 ### API
-1. ```"localhost:5001/api"``` is the endpoint for the C# api the responses are below
+* ```"localhost:5001/api"``` is the endpoint for the C# api the responses are below
 * ```"/api/accounts"``` - this returns a list of all the accounts as JSON objects the datastructure for each item in the list looks like the following
 ```JSON
 {
