@@ -1,12 +1,12 @@
 # Technovations Employment Project
 ## Requirements:
 * .NET core 3.1.400 - this probably isnt the only version this works on but its whats installed in my computer at the moment so thats what it got written in
-* .NET entitiy 
+* .NET entitiy framework
 ```bash
 dotnet tool install --global dotnet-ef
 ```
 
-* Node.js - the react side of the client runs on node this will need to be installed and packages will automatically install when dotnet run is executed because i used the default .NET React template to start
+* Node.js - the react side of the client runs on node this will need to be installed and packages will automatically install when dotnet run is executed because i used the default .NET React template to start node.js can be aquired [here](https://nodejs.org/en/) most likely the LTS version available will do again you can run ```npm i``` if you want but the the later dotnet run command will do this automatically.
 
 ## instructions
 ### startup
@@ -28,7 +28,7 @@ dotnet run
 
 
 ### API
-1. ```"/api"``` is the endpoint for the C# api the responses are below
+1. ```"localhost:5001/api"``` is the endpoint for the C# api the responses are below
 * ```"/api/accounts"``` - this returns a list of all the accounts as JSON objects the datastructure for each item in the list looks like the following
 ```JSON
 {
