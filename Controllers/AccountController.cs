@@ -65,7 +65,7 @@ namespace TechnovationsBankingApp.Controllers
     [HttpGet("/api/{acctnumber}/redeem")]
     public bool RedeemReward(string acctnumber){
       CustomerAccount account = dbContext.Accounts.Single(a => a.AccountNumber == acctnumber);
-      if(account.IsEnrolled && account.RewardsPoints>50){
+      if(account.IsEnrolled && account.RewardsPoints>=50){
         account.RewardsPoints = account.RewardsPoints - 50;
         account.CurrentBalance = account.CurrentBalance + 50;
         dbContext.SaveChanges();

@@ -19,44 +19,60 @@ export class AccountsData extends Component {
     function IsEnrolled(account){
       if (!account.IsEnrolled) {
         return (
-          <form method="post" action>
-            <button type="button" class="btn btn-primary">Enroll Now!</button>
-          </form>
+          <button type="button" class="btn btn-primary" onClick={async ()=>{
+            await fetch(`api/${account.AccountNumber}/enroll`).then(response => {
+              if(response){
+                window.location.reload(false)
+              }
+            })
+          }}>Enroll Now!</button>
         )
       }
       else {
-        if (account.RewardsPoints>50) {
-          return <button type="button" class="btn btn-success">Redeem Reward</button>
+        if (account.RewardsPoints>=50) {
+          return <button type="button" class="btn btn-success" onClick={async () => {
+            await fetch(`api/${account.AccountNumber}/redeem`).then(response => {
+              if(response){
+                window.location.reload(false)
+              }
+            }
+            )
+          }}>Redeem Reward</button>
         } else { return <span class="text-info">Not Enough Points</span>}
       }
     }
 
 
     return(
-      <table className="table table-striped" aria-labelledby="tabelLabel">
-        <thead>
-          <th>Account Name</th>
-          <th>Balance</th>
-          <th>Account Name</th>
-          <th>Rewards Points</th>
-          <th>Rewards Program</th>
-        </thead>
-        <tbody>
-          {
-            accounts.map(accounts => {
-              return (
-                <tr key={accounts.AccountNumber}>
-                  <td>{accounts.AccountNumber}</td>
-                  <td>{accounts.FormattedBalance}</td>
-                  <td>{accounts.NickName}</td>
-                  <td>{accounts.RewardsPoints}</td>
-              <td>{IsEnrolled(accounts)}</td>
-                </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
+      <div>
+        <table className="table table-striped" aria-labelledby="tabelLabel">
+          <thead>
+            <th>Account Name</th>
+            <th>Balance</th>
+            <th>Account Name</th>
+            <th>Rewards Points</th>
+            <th>Rewards Program</th>
+          </thead>
+          <tbody>
+            {
+              accounts.map(accounts => {
+                return (
+                  <tr key={accounts.AccountNumber}>
+                    <td>{accounts.AccountNumber}</td>
+                    <td>{accounts.FormattedBalance}</td>
+                    <td>{accounts.NickName}</td>
+                    <td>{accounts.RewardsPoints}</td>
+                <td>{IsEnrolled(accounts)}</td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </table>
+        <button onClick={async () => {
+          await fetch('api/create').then(window.location.reload(false))
+        }}>Create New Account</button>
+      </div>
     );
   };
 
