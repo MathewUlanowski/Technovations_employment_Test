@@ -55,21 +55,21 @@ export class AccountsData extends Component {
           </thead>
           <tbody>
             {
-              accounts.map(accounts => {
+              accounts.map(account => {
                 return (
-                  <tr key={accounts.AccountNumber}>
-                    <td>{accounts.AccountNumber}</td>
-                    <td>{accounts.FormattedBalance}</td>
-                    <td>{accounts.NickName}</td>
-                    <td>{accounts.RewardsPoints}</td>
-                <td>{IsEnrolled(accounts)}</td>
+                  <tr key={account.AccountNumber}>
+                    <td>{account.AccountNumber}</td>
+                    <td>{account.FormattedBalance}</td>
+                    <td>{account.NickName}</td>
+                    <td>{account.RewardsPoints}</td>
+                <td>{IsEnrolled(account)}</td>
                   </tr>
                 )
               })
             }
           </tbody>
         </table>
-        <button onClick={async () => {
+        <button class="btn btn-info" onClick={async () => {
           await fetch('api/create').then(window.location.reload(false))
         }}>Create New Account</button>
       </div>

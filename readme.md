@@ -45,7 +45,7 @@ dotnet run
 * ```/api/{AccountNumber}/enroll``` this will return a bool if the object succesfully changed the IsEnrolled status of the object if it is already enrolled then it will return false
 * ```/api/{AccountNumber}/redeem``` This will redeem the rewards for the account if applicable and return a bool weather or not it succesfully claimed a reward this can only be done if the customer has 50+ points and is enrolled in the rewards program 
 * ```/api/create``` generates a new account with random parameters 
-* ```/api/BIGREDBUTTON``` this will go through the database and remove every entry essentually dropping the database without removing the table I put this in because mostly to demonstrate delete as well
+* ```/api/BIGREDBUTTON``` this will go through the database and remove every entry essentually dropping the database without removing the table I put this in mostly to demonstrate delete as well but also when you generate a bunch of accounts that arent demonstrating all the possible scenarios you can reset to make things less cluttered
 
 ### web application
 the endpoint for the website is ```localhost:5001``` displays the accounts and has some logic to only show the buttons or information relevant to the rewards program (Redeem button, Enroll button or a message that the account is lacking enough points to redeem a reward). upon clicking the button it will make a call to the api perform the appropriate action on the account EX: redeem reward button will call ```/api/{account number}/redeem``` which will remove 50 rewards points and add $50 to the account.
